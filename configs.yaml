@@ -1,0 +1,49 @@
+defaults:
+  logdir: ''
+  dataset_path: '/media/ytzheng/3EA48EC9A48E835F/CARLA_DATA/Town01_copycat'
+  device: 'cuda:0'
+  batch_size: 36
+  batch_length: 18
+  learning_rate: 0.01
+  epochs: 250000
+  log_every: 1000
+
+  # Encoder
+  Encoder:
+    in_channels: 768 
+    out_channels: 1
+    embed_size: 1024
+    time_num: 1000
+    num_blocks: 3 
+    T_dim: 18 
+    output_T_dim: 17 
+    heads: 8 
+    cheb_K: 2 
+    forward_expansion: 4
+    dropout: 0
+    N_in: 16
+    N_out: 16
+
+  vq:
+    num_embeddings: 8
+    embedding_dim: 16
+    commitment_scalar: 1.0
+
+  # Decoder
+  Decoder:
+    in_channels: 769 
+    out_channels: 768
+    embed_size: 1024 
+    time_num: 1000
+    num_blocks: 3 
+    T_dim: 17 
+    output_T_dim: 1
+    heads: 8 
+    cheb_K: 2 
+    forward_expansion: 4 
+    dropout: 0.1
+    N_in: 16
+    N_out: 16
+
+
+
